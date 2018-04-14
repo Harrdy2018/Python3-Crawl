@@ -1,6 +1,35 @@
 一、预备知识
+#函数
 urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None) 
 ###Open the URL url, which can be either a string or a Request object.
+#这个函数返回的对象能干什么事情
+geturl() — return the URL of the resource retrieved, commonly used to determine if a redirect was followed 
+info() — return the meta-information of the page 
+getcode() – return the HTTP status code of the response
+
+
+#example
+response = urllib.request.urlopen(url='http://placekitten.com/g/500/600')
+print(response.geturl())
+##http://placekitten.com/g/500/600
+
+print(response.info())
+#返回网页信息
+Date: Sat, 14 Apr 2018 14:54:50 GMT
+Content-Type: image/jpeg
+Content-Length: 26590
+Connection: close
+Set-Cookie: __cfduid=d45da513f9a3993eafdd8ef91b36be6081523717690; expires=Sun, 14-Apr-19 14:54:50 GMT; path=/; domain=.placekitten.com; HttpOnly
+Accept-Ranges: bytes
+X-Powered-By: PleskLin
+Access-Control-Allow-Origin: *
+Cache-Control: public
+Expires: Thu, 31 Dec 2020 20:00:00 GMT
+Server: cloudflare
+CF-RAY: 40b7028d62686ca6-SJC
+
+print(response.getcode())
+#200  连接正常，访问服务器
 
 
 二、实战
