@@ -1,1 +1,26 @@
+一、预备知识
+urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None) 
+###Open the URL url, which can be either a string or a Request object.
 
+
+二、实战
+#当urlopen()函数接收的是字符串时，程序代码如下
+import urllib.request
+def main():
+    response = urllib.request.urlopen(url='http://placekitten.com/g/500/600')
+    cat_img=response.read()
+    with open('cat_500_600.jpg','wb') as f:
+        f.write(cat_img)
+if __name__=="__main__":
+    main()
+    
+#当urlopen()函数接收的是Request对象时，程序代码如下    
+import urllib.request
+def main():
+    req=urllib.request.Request(url='http://placekitten.com/g/500/600')
+    response=urllib.request.urlopen(req)
+    cat_img=response.read()
+    with open('cat_500_600.jpg','wb') as f:
+        f.write(cat_img)
+if __name__=="__main__":
+    main()
