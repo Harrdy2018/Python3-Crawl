@@ -1,0 +1,34 @@
+#有道翻译
+#在客户端和服务器之间两种常用的请求方式是get和post请求
+#get是从服务器请求获得数据，而post是向指定的服务器提交被处理的数据
+
+#函数urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None) 
+#如果data被赋值，则由post请求代替get请求
+#在有道翻译上，我们用抓包工具可以发现，对于翻译同一段话，提交的表单如下所示：
+#第一次提交的表单
+i: network
+from: en                          
+to: zh-CHS
+smartresult: dict
+client: fanyideskweb
+salt: 1523759533873
+sign: 9e24ed0a4d8c80b75c78a11b217fcbe1
+doctype: json
+version: 2.1
+keyfrom: fanyi.web
+action: FY_BY_CLICKBUTTION
+typoResult: false
+#第二次提交的表单
+i: network
+from: en
+to: zh-CHS
+smartresult: dict
+client: fanyideskweb
+salt: 1523759797326
+sign: f6ced3b30bb2dd62f267bd66e68e3a18
+doctype: json
+version: 2.1
+keyfrom: fanyi.web
+action: FY_BY_CLICKBUTTION
+typoResult: false
+#对比两次提交的表单，我们发现，只有salt,sign值在变化，所以只要解决这两个值，我们就可以成功实现英译汉的翻译
