@@ -31,3 +31,7 @@ def main():
 if __name__=="__main__":
     main()
 >>>{'User-agent': 'Mozilla/5.0'}
+
+#总结---修改headers的方法
+一，通过Request的headers参数修改
+二，通过Request.add_header()方法修改
