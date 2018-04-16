@@ -8,8 +8,21 @@ class urllib.request.ProxyHandler(proxies=None)
 proxy_support=urllib.request.ProxyHandler({})
 二，定制、创建一个opener
 #私人定制
-poener=urllib.request.build_opener(proxy_support)
+opener=urllib.request.build_opener(proxy_support)
 三，安装opener
 urllib.request.install_opener(opener)
 调用opener
 opener.open(url)
+
+###example
+在网上查代理IP地址http://www.xicidaili.com/   https://www.kuaidaili.com/free/
+
+import urllib.request
+url="http://www.whatismyip.com.tw"
+proxy_support=urllib.request.ProxyHandler({'http':'14.221.165.121:9797'})
+opener=urllib.request.build_opener(proxy_support)
+opener.addheaders=[('User-Agent','Mozilla/5.0')]
+urllib.request.install_opener(opener)
+response=urllib.request.urlopen(url)
+html=response.read().decode('utf-8')
+print(html)
