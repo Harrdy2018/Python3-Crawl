@@ -35,6 +35,3 @@ if __name__=="__main__":
 #总结---修改headers的方法
 一，通过Request的headers参数修改
 二，通过Request.add_header()方法修改
-#服务器也会作相应的反爬虫策略，比如计算提交的频率，如果频率超过，就不让你提交了，改进方法，延迟提交
-import time
-time.sleep(5)//让程序每运行一次先睡5秒
