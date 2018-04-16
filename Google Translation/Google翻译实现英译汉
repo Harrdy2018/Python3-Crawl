@@ -4,7 +4,7 @@
 #向Google翻译器上提交数据的方式是get方法
 #函数urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None) 
 #如果data被赋值，则由post请求代替get请求
-#在Google翻译上，我们用抓包工具可以发现，对于翻译同一段话，提交的表单如下所示：
+#在Google翻译上，我们用抓包工具可以发现，对于翻译同一段话，提交的Query String Parameters如下所示：
 #第一次提交的Query String Parameters
 client: t
 sl: zh-CN
