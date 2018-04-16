@@ -1,5 +1,6 @@
 #由于在表单的提交过程中，表单中的salt和sign两个值随着时间戳在变化，需要花点时间读懂有道翻译源码中的JS代码，弄清楚有道翻译的加密机制，才能写出正确代码
 #下面代码只是一种思维方式，程序本身运行有错误，等时间充足过来修正！！
+#python默认编码是unicode   st.encode('utf-8')是将st编码成utf-8格式  st.decode('utf-8')是将编码成utf-8格式的字符串解码成unicode格式
 import urllib.request
 import urllib.parse
 def main():
