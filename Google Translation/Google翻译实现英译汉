@@ -1,1 +1,54 @@
 #Google翻译实现原理
+#在客户端和服务器之间两种常用的请求方式是get和post请求
+#get是从服务器请求获得数据，而post是向指定的服务器提交被处理的数据
+#向Google翻译器上提交数据的方式是get方法
+#函数urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None) 
+#如果data被赋值，则由post请求代替get请求
+#在Google翻译上，我们用抓包工具可以发现，对于翻译同一段话，提交的表单如下所示：
+#第一次提交的Query String Parameters
+client: t
+sl: zh-CN
+tl: en
+hl: zh-CN
+dt: at
+dt: bd
+dt: ex
+dt: ld
+dt: md
+dt: qca
+dt: rw
+dt: rm
+dt: ss
+dt: t
+ie: UTF-8
+oe: UTF-8
+source: btn
+ssel: 3
+tsel: 3
+kc: 0
+tk: 267136.157436
+q: 我是一名研究生
+#第二次提交的Query String Parameters
+client: t
+sl: zh-CN
+tl: en
+hl: zh-CN
+dt: at
+dt: bd
+dt: ex
+dt: ld
+dt: md
+dt: qca
+dt: rw
+dt: rm
+dt: ss
+dt: t
+ie: UTF-8
+oe: UTF-8
+source: btn
+ssel: 3
+tsel: 3
+kc: 0
+tk: 447277.42577
+q: 我是一名学生
+#对比两次提交的表单，我们发现，只有tk值在变化，所以只要解决这个值，我们就可以成功实现汉译英的翻译
