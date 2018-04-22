@@ -40,8 +40,7 @@ opener.open(url)
 ***
 ## 使用代理例子
 * Ex.1
-在网上查代理IP地址http://www.xicidaili.com/   https://www.kuaidaili.com/free/
-
+```python
 import urllib.request
 url="http://www.whatismyip.com.tw"
 proxy_support=urllib.request.ProxyHandler({'http':'14.221.165.121:9797'})
@@ -51,3 +50,4 @@ urllib.request.install_opener(opener)
 response=urllib.request.urlopen(url)
 html=response.read().decode('utf-8')
 print(html)
+```
