@@ -1,7 +1,7 @@
 # 代理
 ***代理（proxy）***
 * [为什么要使用代理](#为什么要使用代理)
-* [怎么样获取代理IP和查询IP](#怎么样获取代理IP和查询IP)
+* [怎么样获取代理IP和查询IP](#获取和查询)
 * [创建代理步骤](#创建代理步骤)
 * [使用代理例子](#使用代理例子)
 * [总结](#使用代理例子)
@@ -16,7 +16,7 @@ time.sleep(5)//让程序每运行一次先睡5秒
 ```
 
 ***
-## 怎么样获取代理IP和查询IP
+## 获取和查询
 * [查询本地真实IP地址](http://ip.chinaz.com/getip.aspx):`http://ip.chinaz.com/getip.aspx`
 * [返回当前IP地址](http://icanhazip.com):`http://icanhazip.com`
 * [国内HTTP代理](http://www.xicidaili.com/wt/):`http://www.xicidaili.com/wt/`
