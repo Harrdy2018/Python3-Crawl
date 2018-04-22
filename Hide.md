@@ -5,7 +5,7 @@
 
 ***
 ## 基础知识 
-**解析路径请求的类**
+**解析路径请求的类**<br>
 `class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None) `
 
 ***
