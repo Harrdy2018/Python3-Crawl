@@ -13,8 +13,9 @@ time.sleep(5)//让程序每运行一次先睡5秒
 
 ***
 ## 怎么样获取代理IP和查询IP
-* [查询IP地址](http://ip.chinaz.com/getip.aspx):`http://ip.chinaz.com/getip.aspx`
-* [国内代理网址](http://www.xicidaili.com/nn/):`http://www.xicidaili.com/nn/`
+* [查询本地真实IP地址](http://ip.chinaz.com/getip.aspx):`http://ip.chinaz.com/getip.aspx`
+* [返回当前IP地址](http://icanhazip.com):`http://icanhazip.com`
+* [国内HTTP代理](http://www.xicidaili.com/wt/):`http://www.xicidaili.com/wt/`
 * [测试IP国外代理](http://www.ip181.com):`http://www.ip181.com`
 
 ***
@@ -39,11 +40,50 @@ opener.open(url)
 
 ***
 ## 使用代理例子
-* Ex.1
+* Ex.1 显示自己真正的IP地址
 ```python
 import urllib.request
-url="http://www.whatismyip.com.tw"
-proxy_support=urllib.request.ProxyHandler({'http':'14.221.165.121:9797'})
+url="http://ip.chinaz.com/getip.aspx"
+proxy={'http':'113.12.72.24:3128'}
+proxy_support=urllib.request.ProxyHandler(proxy)
+opener=urllib.request.build_opener(proxy_support)
+opener.addheaders=[('User-Agent','Mozilla/5.0')]
+urllib.request.install_opener(opener)
+response=urllib.request.urlopen(url)
+html=response.read().decode('utf-8')
+print(html)
+>>>{ip:'218.2.216.5',address:'江苏省南京市 南京邮电大学'}
+```
+```
+爬取会经常被封ip。当自己的ip被网站封了之后，只能采取换代理ip的方式进行爬取，
+所以，我建议，每次爬取的时候尽量用代理来爬，封了代理，还有代理，无穷无尽啊，可别拿代理去黑学校网站啊，扔上代理的实现程序
+```
+* Ex.2 显示代理IP地址
+```python
+import urllib.request
+url="http://icanhazip.com"
+proxy={'http':'113.12.72.24:3128'}
+proxy_support=urllib.request.ProxyHandler(proxy)
+opener=urllib.request.build_opener(proxy_support)
+opener.addheaders=[('User-Agent','Mozilla/5.0')]
+urllib.request.install_opener(opener)
+response=urllib.request.urlopen(url)
+html=response.read().decode('utf-8')
+print(html)
+>>>113.12.72.24
+```
+```
+这里采用的测试网站是http://icanhazip.com， 它可以检测出你使用的ip是什么，正好来检验自己是否用代理ip成功
+从结果中可以看出，检测出了代理ip，正是我自己加上的ip值，此乃最后一招，当自己ip被封后，采用代理ip进行访问。
+要是一个代理ip挂了怎么办，那你可以做个ip池啊，就是把一堆代理ip放在一起，每次运行时从ip池挑一个代理ip当做访问ip就可以了！！！
+```
+* Ex.3 IP池
+```python
+import urllib.request
+import random
+url="http://icanhazip.com"
+ip_list=['58.252.6.165:9000','113.12.72.24:3128']
+proxy_support=urllib.request.ProxyHandler({'http':random.choice(ip_list)})
 opener=urllib.request.build_opener(proxy_support)
 opener.addheaders=[('User-Agent','Mozilla/5.0')]
 urllib.request.install_opener(opener)
