@@ -105,7 +105,6 @@ r= requests.get(url, headers=head, proxies=proxy)
 print(r.text)
 >>>58.252.6.165
 ```
-***这我就不知道了，明明使用了代理，为什么返回的还是我真正的IP地址，有待高手来帮我解决***
 
 ***
 ## 总结
