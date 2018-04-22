@@ -1,7 +1,17 @@
-#伪装浏览器访问服务器
-#解析URL请求的类
-class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None) 
-#在正常用pyhthon3访问服务器
+# 伪装浏览器访问服务器
+* [基础知识](#基础知识)
+* [实例](#实例)
+* [总结](#总结)
+
+***
+## 基础知识 
+**解析路径请求的类**
+`class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None) `
+
+***
+## 实例
+* Ex.1 在正常用pyhthon3访问服务器
+```python
 import urllib.request
 def main():
     url='http://fanyi.youdao.com'
@@ -10,7 +20,9 @@ def main():
 if __name__=="__main__":
     main()
 >>>{}
-#伪装浏览器访问服务器
+```
+* Ex.2 伪装浏览器访问服务器
+```python
 import urllib.request
 def main():
     url='http://fanyi.youdao.com'
@@ -21,7 +33,9 @@ def main():
 if __name__=="__main__":
     main()
 >>>{'User-agent': 'Mozilla/5.0'}
-#第二种方法改变请求头
+```
+* Ex.3 第二种方法改变请求头
+```python
 import urllib.request
 def main():
     url='http://fanyi.youdao.com'
@@ -31,7 +45,10 @@ def main():
 if __name__=="__main__":
     main()
 >>>{'User-agent': 'Mozilla/5.0'}
+```
 
-#总结---修改headers的方法
-一，通过Request的headers参数修改
-二，通过Request.add_header()方法修改
+***
+## 总结
+**修改headers的方法**
+* 通过Request的headers参数修改
+* 通过Request.add_header()方法修改
