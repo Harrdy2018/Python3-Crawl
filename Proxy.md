@@ -29,12 +29,18 @@ proxy_support=urllib.request.ProxyHandler({})
 opener=urllib.request.build_opener(proxy_support)
 ```
 * 安装opener
-`urllib.request.install_opener(opener)`<br>
+```
+urllib.request.install_opener(opener)
+```
 * 调用opener
+```
 opener.open(url)
+```
 
-###example
-在网上查代理IP地址http://www.xicidaili.com/   https://www.kuaidaili.com/free/
+***
+## 使用代理例子
+* Ex.1
+在网上查代理IP地址http://www.xicidaili.com/   https://www.kuaidaili.com/free/
 
 import urllib.request
 url="http://www.whatismyip.com.tw"
