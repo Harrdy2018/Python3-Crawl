@@ -83,3 +83,21 @@ end= root[-1:]
 print(start[0].tag)#div0
 print(end[0].tag)#div3
 ```
+
+***
+* Ex.2 判断元素是否有子元素
+```python
+from lxml import etree
+root=etree.Element('body')
+child1=etree.SubElement(root,'div1')
+child2=etree.SubElement(root,'div2')
+child3=etree.SubElement(root,'div3')
+# test if it's some kind of Element
+print(etree.iselement(root))
+# test if it has children
+if len(root):
+   print("The root element has children")
+>>>
+True
+The root element has children
+```
