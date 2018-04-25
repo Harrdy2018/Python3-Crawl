@@ -151,3 +151,10 @@ True
 True
 True
 ```
+
+***
+# Elements carry attributes as a dict
+```
+XML elements支持attributes.你能在the Element factory直接创建他们
+```
+* Ex.1
