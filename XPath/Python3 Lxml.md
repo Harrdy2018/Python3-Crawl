@@ -134,3 +134,20 @@ print(data)
 >>>
 [4, 2, 3, 4]
 ```
+
+***
+* Ex.4
+```python
+from lxml import etree
+root=etree.Element('body')
+child1=etree.SubElement(root,'div1')
+child2=etree.SubElement(root,'div2')
+child3=etree.SubElement(root,'div3')
+print(root is root[0].getparent())# lxml.etree only!
+print(root[0] is root[1].getprevious())# lxml.etree only!
+print(root[1] is root[0].getnext())# lxml.etree only!
+>>>
+True
+True
+True
+```
