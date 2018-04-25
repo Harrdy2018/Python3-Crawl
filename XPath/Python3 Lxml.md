@@ -101,3 +101,36 @@ if len(root):
 True
 The root element has children
 ```
+
+***
+* Ex.3.1 元素列表里的赋值，即删除
+```python
+from lxml import etree
+root=etree.Element('body')
+child1=etree.SubElement(root,'div1')
+child2=etree.SubElement(root,'div2')
+child3=etree.SubElement(root,'div3')
+
+for child in root:
+    print(child.tag)
+root[0]=root[-1]
+print('***************')
+for child in root:
+    print(child.tag)
+>>>
+div1
+div2
+div3
+***************
+div3
+div2
+```
+
+* Ex.3.2 python列表赋值
+```python
+data=[1,2,3,4]
+data[0]=data[-1]
+print(data)
+>>>
+[4, 2, 3, 4]
+```
