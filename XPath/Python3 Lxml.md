@@ -158,3 +158,52 @@ True
 XML elements支持attributes.你能在the Element factory直接创建他们
 ```
 * Ex.1
+```python
+from lxml import etree
+root = etree.Element("body", interesting="totally")
+XML_binary=etree.tostring(root)
+print(XML_binary)
+>>>
+b'<body interesting="totally"/>'
+```
+
+***
+* Ex.2 Attributes只是无序的name-value pairs，因此处理它们的一种非常方便的方式就是通过像字典一样的元素接口
+```python
+from lxml import etree
+root = etree.Element("body", interesting="totally")
+etree.tostring(root)
+print(root.get('interesting'))
+>>>totally
+print(root.get("hello"))
+>>>None
+root.set("hello", "Huhu")
+print(root.get("hello"))
+>>>Huhu
+print(etree.tostring(root))
+>>>b'<body interesting="totally" hello="Huhu"/>'
+print(sorted(root.keys()))
+>>>['hello', 'interesting']
+for name, value in sorted(root.items()):
+    print('%s = %r' % (name, value))
+>>>hello = 'Huhu'
+interesting = 'totally'
+```
+
+***
+* Ex.3 对于想要进行项查找或有其他原因需要获得“真正”类似字典的对象的情况，你可以使用attrib property
+```python
+from lxml import etree
+root = etree.Element("body", interesting="totally")
+attributes = root.attrib
+print(attributes["interesting"])
+print(attributes.get("no-such-attribute"))
+attributes["hello"] = "Guten Tag"
+print(attributes["hello"])
+print(root.get("hello"))
+>>>
+totally
+None
+Guten Tag
+Guten Tag
+```
