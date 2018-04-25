@@ -1,4 +1,11 @@
 # Python3 Lxml
+* [lxml](#lxml)
+* [The Element class](#The Element class)
+* [Elements are lists](#Elements are lists)
+* [Elements carry attributes as a dict](#Elements carry attributes as a dict)
+* []()
+* []()
+
 
 ***
 # lxml
