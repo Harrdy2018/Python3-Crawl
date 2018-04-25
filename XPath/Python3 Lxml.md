@@ -18,19 +18,21 @@ Elements可以通过元素工厂(the Element factory)轻松创建
 * Ex.1
 ```python
 from lxml import etree
-root_tag_name=etree.Element('root')
+#创建根元素，标签名为body
+root=etree.Element('body')
 #XML元素的标签名可以通过tag property来访问
-#print(root_tag_name.tag)#root
+print(root.tag)#body
 #Elements以XML tree structure进行组织。
 #要创建child elements并将它们添加到parent element,可以使用append()方法
-root_tag_name.append( etree.Element("child1") )
+root.append(etree.Element("div1"))
 #为了看到真正的XML，你可以序列化(serialise)你创建的树
-XML_binary=etree.tostring(root_tag_name, pretty_print=True)
+XML_binary=etree.tostring(root, pretty_print=True)
 print(XML_binary.decode('utf-8'))
 >>>
-<root>
-  <child1/>
-</root>
+body
+<body>
+  <div1/>
+</body>
 ```
 
 ***
@@ -38,16 +40,16 @@ print(XML_binary.decode('utf-8'))
 * Ex.2 改写Ex.1
 ```python
 from lxml import etree
-root_tag_name=etree.Element('root')
-child1_tag_name=etree.SubElement(root_tag_name,'child1')
-child2_tag_name=etree.SubElement(root_tag_name,'child2')
-child3_tag_name=etree.SubElement(root_tag_name,'child3')
-XML_binary=etree.tostring(root_tag_name, pretty_print=True)
+root=etree.Element('body')
+child1=etree.SubElement(root,'div1')
+child2=etree.SubElement(root,'div2')
+child3=etree.SubElement(root,'div3')
+XML_binary=etree.tostring(root, pretty_print=True)
 print(XML_binary.decode('utf-8'))
 >>>
-<root>
-  <child1/>
-  <child2/>
-  <child3/>
-</root>
+<body>
+  <div1/>
+  <div2/>
+  <div3/>
+</body>
 ```
