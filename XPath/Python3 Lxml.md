@@ -4,6 +4,7 @@
 * Elements are lists
 * Elements carry attributes as a dict
 * Elements contain text
+* Using XPath to find text
 
 
 
@@ -267,4 +268,82 @@ b'<html><body>TEXT<br/>TALL</body></html>'
 b'<br/>TALL'
 b'<br/>'
 b'TEXTTALL'
+```
+
+***
+# Using XPath to find text
+**提取树的文本内容的另一种方法是XPath，它还允许您将单独的文本块提取到列表中：**
+```python
+from lxml import etree
+root=etree.Element('html')
+child1=etree.SubElement(root,'body')
+child1.text='TEXT'
+child2=etree.SubElement(child1,'br')
+child2.tail='TALL'
+print(etree.tostring(root))
+
+print(root.xpath("string()"))
+print(root.xpath("//text()"))
+>>>
+b'<html><body>TEXT<br/>TALL</body></html>'
+TEXTTALL
+['TEXT', 'TALL']
+```
+
+**如果你想更频繁地使用它，你可以把它包装在一个函数中**
+```python
+from lxml import etree
+root=etree.Element('html')
+child1=etree.SubElement(root,'body')
+child1.text='TEXT'
+child2=etree.SubElement(child1,'br')
+child2.tail='TALL'
+print(etree.tostring(root))
+
+build_text_list = etree.XPath("//text()")
+print(build_text_list(root))
+>>>
+b'<html><body>TEXT<br/>TALL</body></html>'
+['TEXT', 'TALL']
+```
+
+**请注意，XPath返回的字符串结果是一个知道其起源的特殊“智能”对象。你可以通过它的getparent()方法来问它来自哪里，就像你使用Elements一样**
+```python
+from lxml import etree
+root=etree.Element('html')
+child1=etree.SubElement(root,'body')
+child1.text='TEXT'
+child2=etree.SubElement(child1,'br')
+child2.tail='TALL'
+print(etree.tostring(root))
+
+build_text_list = etree.XPath("//text()")
+texts = build_text_list(root)
+print(texts[0])
+parent = texts[0].getparent()
+print(parent.tag)
+print(texts[1])
+print(texts[1].getparent().tag)
+
+#find out if it's normal text content or tail text
+print(texts[0].is_text)
+print(texts[1].is_text)
+print(texts[1].is_tail)
+
+#虽然这适用于text()函数的结果
+#但lxml不会告诉您由XPath函数string()或concat()构造的字符串值的来源
+stringify = etree.XPath("string()")
+print(stringify(root))
+print(stringify(root).getparent())
+>>>
+b'<html><body>TEXT<br/>TALL</body></html>'
+TEXT
+body
+TALL
+br
+True
+False
+True
+TEXTTALL
+None
 ```
