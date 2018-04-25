@@ -3,6 +3,7 @@
 * The Element class
 * Elements are lists
 * Elements carry attributes as a dict
+* Elements contain text
 
 
 
@@ -225,4 +226,45 @@ d = dict(attributes)
 print(sorted(d.items()))
 >>>
 [('hello', 'Guten Tag'), ('interesting', 'totally')]
+```
+
+***
+# Elements contain text
+* Ex.1 元素能包含文本
+```python
+from lxml import etree
+root = etree.Element("body")
+root.text = "TEXT"
+print(root.text)
+print(etree.tostring(root))
+>>>
+TEXT
+b'<body>TEXT</body>'
+```
+```
+在许多XML文档（以数据为中心的文档）中，这是唯一可以找到文本的地方。 它由叶子标签封装在树层次结构的最底部。
+但是，如果将XML用于标记的文本文档（如HTML），则文本也可以出现在不同元素之间，即在树的中间
+<html><body>Hello<br/>World</body></html>
+这里，<br/>标签被文字包围。 这通常被称为文档样式或混合内容XML。 
+元素通过它们的尾部属性支持它。 它包含直接跟随元素的文本，直到XML树中的下一个元素：
+```
+```python
+from lxml import etree
+root=etree.Element('html')
+child1=etree.SubElement(root,'body')
+child1.text='TEXT'
+child2=etree.SubElement(child1,'br')
+child2.tail='TALL'
+print(etree.tostring(root))
+
+print(etree.tostring(child2))
+print(etree.tostring(child2, with_tail=False))
+
+#如果你仅仅需要文本，而不需要任何中间标签
+print(etree.tostring(root, method="text"))
+>>>
+b'<html><body>TEXT<br/>TALL</body></html>'
+b'<br/>TALL'
+b'<br/>'
+b'TEXTTALL'
 ```
