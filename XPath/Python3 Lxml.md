@@ -53,3 +53,33 @@ print(XML_binary.decode('utf-8'))
   <div3/>
 </body>
 ```
+
+***
+# Elements are lists
+```
+为了简单直接地访问subelements，元素尽可能地模仿正常Python列表的行为
+```
+* Ex.1
+```python
+from lxml import etree
+root=etree.Element('body')
+child1=etree.SubElement(root,'div1')
+child2=etree.SubElement(root,'div2')
+child3=etree.SubElement(root,'div3')
+print(root[0].tag)#div1
+print(len(root))#3
+print(root.index(root[1]))#1
+
+children=list(root)
+for child in children:
+    print(child.tag)
+#div1
+#div2
+#div3
+
+root.insert(0, etree.Element("div0"))
+start=root[:1]
+end= root[-1:]
+print(start[0].tag)#div0
+print(end[0].tag)#div3
+```
