@@ -1,6 +1,9 @@
 # XPath
-
-
+* [XML](#XML)
+* [什么是 XML?](#什么是 XML?)
+* [什么是 XPath?](#什么是 XPath?)
+* [XPath 路径表达式](#XPath 路径表达式)
+* [实战](#实战)
 
 ***
 # XML
@@ -34,16 +37,9 @@
 
 ***
 # 实战
-* 利用lxml.etree.parse()解析html文件
+* 利用lxml.etree.parse()解析文件
 * 新建hello.html
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 <div>
     <ul>
          <li class="item-0"><a href="link1.html">first item</a></li>
@@ -53,7 +49,25 @@
          <li class="item-0"><a href="link5.html">fifth item</a></li>
      </ul>
 </div>
-</body>
-</html>
 ```
 ***
+```python
+from lxml import etree
+page=etree.parse('hello.html')
+print(type(page))#<class 'lxml.etree._ElementTree'>
+print(etree.tostring(page,pretty_print=True,method='html').decode())
+>>>
+<class 'lxml.etree._ElementTree'>
+<div>
+    <ul>
+         <li class="item-0"><a href="link1.html">first item</a></li>
+         <li class="item-1"><a href="link2.html">second item</a></li>
+         <li class="item-inactive"><a href="link3.html"><span class="bold">third item</span></a></li>
+         <li class="item-1"><a href="link4.html">fourth item</a></li>
+         <li class="item-0"><a href="link5.html">fifth item</a></li>
+     </ul>
+</div>
+```
+
+***
+* 
