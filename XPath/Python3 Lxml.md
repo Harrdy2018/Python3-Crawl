@@ -6,7 +6,7 @@
 * Elements contain text
 * Using XPath to find text
 
-
+***[lxml - XML and HTML with Python](http://lxml.de/)***
 
 ***
 # lxml
