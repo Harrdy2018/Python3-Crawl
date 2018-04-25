@@ -37,4 +37,17 @@ print(XML_binary.decode('utf-8'))
 `SubElement factory能够使上面程序简化，它和Element factory有相同的参数，但是额外要求the parent作为第一个参数`
 * Ex.2 改写Ex.1
 ```python
+from lxml import etree
+root_tag_name=etree.Element('root')
+child1_tag_name=etree.SubElement(root_tag_name,'child1')
+child2_tag_name=etree.SubElement(root_tag_name,'child2')
+child3_tag_name=etree.SubElement(root_tag_name,'child3')
+XML_binary=etree.tostring(root_tag_name, pretty_print=True)
+print(XML_binary.decode('utf-8'))
+>>>
+<root>
+  <child1/>
+  <child2/>
+  <child3/>
+</root>
 ```
