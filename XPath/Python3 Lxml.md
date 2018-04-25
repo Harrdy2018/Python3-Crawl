@@ -5,6 +5,8 @@
 * Elements carry attributes as a dict
 * Elements contain text
 * Using XPath to find text
+* Parsing from strings and files
+* Serialisation
 
 ***[lxml - XML and HTML with Python](http://lxml.de/)***
 
@@ -346,4 +348,89 @@ False
 True
 TEXTTALL
 None
+```
+
+***
+# Parsing from strings and files
+```
+lxml.etree支持以多种方式和所有重要来源解析XML，即字符串，文件，URL（http / ftp）和文件类对象。
+主要的解析函数是fromstring()和parse()，它们都以源作为第一个参数被调用。 
+默认情况下，它们使用标准解析器(standard parser)，但始终可以传递不同的解析器作为第二个参数。
+```
+* lxml.etree.fromstring()函数是解析字符串的最简单方法
+```python
+from lxml import etree
+some_xml_data = "<root>data</root>"
+root = etree.fromstring(some_xml_data)
+print(root)#<Element root at 0x1bc24da7c08>
+print(type(root))#<class 'lxml.etree._Element'>
+print(root.tag)#root
+print(etree.tostring(root))#b'<root>data</root>'
+```
+
+***
+* lxml.etree.XML()函数的行为与fromstring()函数类似，但通常用于将XML文本直接写入源代码
+```python
+from lxml import etree
+root = etree.XML("<root>data</root>")
+print(type(root))#<class 'lxml.etree._Element'>
+print(root.tag)#root
+print(etree.tostring(root))#b'<root>data</root>'
+```
+
+***
+* HTML文字也有相应的函数lxml.etree.HTML()
+```python
+from lxml import etree
+root = etree.HTML("<p>data</p>")
+print(type(root))#<class 'lxml.etree._Element'>
+print(root.tag)#html
+print(etree.tostring(root))#b'<html><body><p>data</p></body></html>'
+```
+
+***
+* lxml.etree.parse()函数用于从文件和文件类对象进行解析
+* parse()函数返回一个ElementTree对象而不是Element对象
+```python
+```
+
+***
+# Serialisation
+```
+序列化通常使用tostring（)函数，返回字符串，文件类对象或URL（通过FTP PUT或HTTP POST）的ElementTree.write（）方法。 
+这两个调用都接受相同的关键字参数，如pretty_print用于格式化输出或编码以选择除纯ASCII之外的特定输出编码
+```
+```python
+>>> from lxml import etree
+>>> root = etree.XML('<div><a><b/></a></div>')
+>>> etree.tostring(root)
+b'<div><a><b/></a></div>'
+>>> etree.tostring(root, xml_declaration=True)
+b"<?xml version='1.0' encoding='ASCII'?>\n<div><a><b/></a></div>"
+>>> etree.tostring(root, encoding='iso-8859-1')
+b"<?xml version='1.0' encoding='iso-8859-1'?>\n<div><a><b/></a></div>"
+>>> etree.tostring(root, pretty_print=True)
+b'<div>\n  <a>\n    <b/>\n  </a>\n</div>\n'
+```
+***
+**序列化函数可以做的不仅仅是XML序列化。 您可以序列化为HTML或通过传递method关键字来提取文本内容**
+```python
+>>> from lxml import etree
+>>> root = etree.XML('<html><head/><body><p>Hello<br/>World</p></body></html>')
+>>> etree.tostring(root).decode() # default: method = 'xml'
+'<html><head/><body><p>Hello<br/>World</p></body></html>'
+>>> print(etree.tostring(root, method='xml') .decode())# same as above
+<html><head/><body><p>Hello<br/>World</p></body></html>
+>>> 
+>>> print(etree.tostring(root, method='html').decode())
+<html><head></head><body><p>Hello<br>World</p></body></html>
+>>> 
+>>> print(etree.tostring(root, method='html', pretty_print=True).decode())
+<html>
+<head></head>
+<body><p>Hello<br>World</p></body>
+</html>
+
+>>> etree.tostring(root, method='text').decode()
+'HelloWorld'
 ```
