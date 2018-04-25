@@ -207,3 +207,16 @@ None
 Guten Tag
 Guten Tag
 ```
+
+***
+* Ex.4 要获取不依赖于XML树的属性的独立快照，请将其复制到字典中
+```python
+from lxml import etree
+root = etree.Element("body", interesting="totally")
+attributes = root.attrib
+attributes["hello"] = "Guten Tag"
+d = dict(attributes)
+print(sorted(d.items()))
+>>>
+[('hello', 'Guten Tag'), ('interesting', 'totally')]
+```
