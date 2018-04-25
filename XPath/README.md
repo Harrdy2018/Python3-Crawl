@@ -1,8 +1,8 @@
 # XPath
 * [XML](#XML)
-* [什么是 XML?](#什么是 XML?)
-* [什么是 XPath?](#什么是 XPath?)
-* [XPath 路径表达式](#XPath 路径表达式)
+* 什么是 XML?
+* 什么是 XPath?
+* XPath 路径表达式
 * [实战](#实战)
 
 ***
