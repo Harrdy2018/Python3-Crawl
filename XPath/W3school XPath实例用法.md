@@ -274,3 +274,34 @@ Learning XML
 b'<title lang="en">XQuery Kick Start</title>\n'
 XQuery Kick Start
 ```
+
+***
+* Ex.5
+````python
+#book[1]下的title标签只有一个，r1列表里面装的Element就是可以操作title标签的东西
+#常见的操作就是，Element.tag,Element.text
+r1=root.xpath('/bookstore/book[1]/title')
+print(r1)
+print(r1[0].text)
+>>>
+[<Element title at 0x21d321a9f08>]
+Harry Potter
+
+
+#每一个book标签下都有一个price标签
+# text()就是获取price标签里的文本
+# 返回一个列表
+r2=root.xpath('/bookstore/book/price/text()')
+print(r2)
+>>>['29.99', '30.00', '39.95', '49.99']
+
+
+r3=root.xpath('/bookstore/book[price>35]/price')
+print(r3)
+>>>[<Element price at 0x23e5476af08>, <Element price at 0x23e5476aec8>]
+
+
+r4=root.xpath('/bookstore/book[price>35]/title')
+print(r4)
+>>>[<Element title at 0x1b2b6429e88>, <Element title at 0x1b2b6429fc8>]
+```
