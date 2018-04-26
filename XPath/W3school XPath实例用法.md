@@ -249,3 +249,28 @@ r6=root.xpath('//@lang')
 print(r6)
 >>>['en', 'en', 'en', 'en']
 ```
+
+***
+* Ex.4 在容器里面进行XPath，如果路径以标签结束，那么返回一个列表，这个列表里面装了每个标签的Element
+```python
+r=root.xpath('/bookstore/book/title')
+print(r)
+print(type(r))
+>>
+[<Element title at 0x21bbf3a8ec8>, <Element title at 0x21bbf3a8e88>, <Element title at 0x21bbf3a8fc8>, <Element title at 0x21bbe32cfc8>]
+<class 'list'>
+
+for element in r:
+    #print(element.tag)#title
+    print(etree.tostring(element))
+    print(element.text)
+>>>
+b'<title lang="en">Harry Potter</title>\n'
+Harry Potter
+b'<title lang="en">Everyday Italian</title>\n'
+Everyday Italian
+b'<title lang="en">Learning XML</title>\n'
+Learning XML
+b'<title lang="en">XQuery Kick Start</title>\n'
+XQuery Kick Start
+```
