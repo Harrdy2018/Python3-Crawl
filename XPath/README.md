@@ -36,7 +36,7 @@
 
 
 ***
-# 实战
+# 实战一
 * 利用lxml.etree.parse()解析文件
 * 新建hello.html
 ```html
@@ -182,4 +182,118 @@ r8= html.xpath('//*[@class="bold"]')
 print(r8[0].tag)
 >>>
 span
+```
+
+***
+# 实战二
+***使用lxml.etree.HTML()解析字符串***
+```python
+from lxml import etree
+html="""
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<title>测试</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body><div id="content">
+<ul id="ul">
+    <li>NO.1</li>
+    <li>NO.2</li>
+    <li>NO.3</li>
+</ul>
+<ul id="ul2">
+    <li>one</li>
+    <li>two</li>
+</ul>
+</div>
+<div id="url">
+    <a href="http:www.58.com" title="58">58</a>
+    <a href="http:www.csdn.net" title="CSDN">CSDN</a>
+</div></body></html>
+"""
+
+#返回的是容易对象，在我写的这些东西里面，我通常把返回的容器对象叫做root，下面是另外一种称呼，叫做选择器，似乎更加贴切
+selector=etree.HTML(html)
+
+#这里使用id属性来定位哪个div和ul被匹配 使用text()获取文本内容
+r1=selector.xpath('//div[@id="content"]/ul[@id="ul"]/li/text()')
+print(r1)
+>>>['NO.1', 'NO.2', 'NO.3']
+
+#这里使用//从全文中定位符合条件的a标签，使用“@标签属性”获取a便签的href属性值
+r2=selector.xpath('//a/@href')
+print(r2)
+>>>['http:www.58.com', 'http:www.csdn.net']
+
+#使用绝对路径定位a标签的title
+r3=selector.xpath('/html/body/div/a/@title')
+print(r3)
+>>>['58', 'CSDN']
+
+#使用相对路径定位 两者效果是一样的
+r4=selector.xpath('//a/@title')
+print(r4)
+>>>['58', 'CSDN']
+```
+
+***
+* 先对字符串做一个选择器
+```python
+from lxml import etree
+html='''
+<body>
+    <div id="aa">aa</div>
+    <div id="ab">ab</div>
+    <div id="ac">ac</div>
+</body>
+'''
+selector=etree.HTML(html)
+
+
+#我们尝试使用序列化，看看效果
+print(etree.tostring(selector,pretty_print=True).decode('utf-8'))
+>>>
+<html><body>
+    <div id="aa">aa</div>
+    <div id="ab">ab</div>
+    <div id="ac">ac</div>
+</body>
+</html>
+#我们可以发现如果是一个不完整的网页字符串对象，那么这个函数会帮我们补全
+#尝试加method方法
+print(etree.tostring(selector,pretty_print=True,method='html').decode('utf-8'))
+>>>
+<html>
+<body>
+    <div id="aa">aa</div>
+    <div id="ab">ab</div>
+    <div id="ac">ac</div>
+</body>
+</html>
+#我们又发现了不一样，method方法帮助我们格式化之后变成了最标准的网页
+
+
+#开始XPath
+#starts-with 解决标签属性值以相同字符串开头的情况
+#这里使用starts-with方法提取div的id标签属性值开头为a的div标签
+r1=selector.xpath('//div[starts-with(@id,"a")]/text()')
+print(r1)
+>>>['aa', 'ab', 'ac']
+```
+
+***
+# 实战三
+***string(.) 标签套标签***
+```python
+from lxml import etree
+html='''<div id="a">left<span id="b">right<ul>up<li>down</li></ul>east</span>west</div>'''
+selector=etree.HTML(html)
+r=selector.xpath('//div[@id="a"]/text()')
+print(r)
+>>>['left', 'west']
+
+
+r2=selector.xpath('//div[@id="a"]')[0].xpath('string(.)')
+print(r2)
+>>>leftrightupdowneastwest
 ```
