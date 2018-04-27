@@ -116,6 +116,6 @@ print(etree.tostring(selector).decode('utf-8'))
 # 选取若干路径
 |path|功能|
 |:-----|:-----|
-|`selector.xpath('//book/title | //book/price')`|`选取book元素的所有title和price元素`|
-|`selector.xpath('//title | //price')`|`选取文档中的所有title和price元素`|
-|`selector.xpath('/bookstore/book/title | //price')`|`选取属于bookstore元素的book元素的所有title元素，以及文档中所有的price元素`|
+|selector.xpath('//book/title | //book/price')|选取book元素的所有title和price元素|
+|selector.xpath('//title | //price')|选取文档中的所有title和price元素|
+|selector.xpath('/bookstore/book/title | //price')|选取属于bookstore元素的book元素的所有title元素，以及文档中所有的price元素|
