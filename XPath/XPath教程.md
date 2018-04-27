@@ -69,7 +69,7 @@ print(etree.tostring(selector).decode('utf-8'))
 ## 选取节点
 ***
 |path|功能|
-|:-----:|:-----:|
+|:-----|:-----|
 |selector.xpath('/bookstore')|绝对路径选取根元素bookstore|
 |selector.xpath('/bookstore/book')|bookstore的子元素的所有book元素|
 |selector.xpath('//book')|相对路径选取所有book子元素，而不管它们在文档中的位置|
@@ -84,7 +84,7 @@ print(etree.tostring(selector).decode('utf-8'))
 ***Predicates，谓语用来查找某个特定的节点或者包含某个指定的值的节点。谓语被嵌在方括号中***
 ***
 |path|功能|
-|:-----:|:-----:|
+|:-----|:-----|
 |selector.xpath('/bookstore/book[1]')|bookstore子元素的第一个book元素|
 |selector.xpath('/bookstore/book[last()]')|bookstore子元素的最后一个book元素|
 |selector.xpath('/bookstore/book[last()-1]')|bookstore子元素的倒数第二个book元素|
