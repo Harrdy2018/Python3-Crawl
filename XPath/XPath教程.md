@@ -67,3 +67,7 @@ print(etree.tostring(selector).decode('utf-8'))
 
 ***
 ## 选取节点
+***
+|path|return|功能|
+|:-----:|:-----:|:-----:|
+|selector.xpath('/bookstore')|[<Element bookstore at 0x1f2dcb8a1c8>]|绝对路径选取根元素bookstore|
