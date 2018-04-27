@@ -93,3 +93,11 @@ print(etree.tostring(selector).decode('utf-8'))
 |selector.xpath('//title[@lang='eng']')|所有title元素，且这些元素拥有值为eng的lang属性|
 |selector.xpath('/bookstore/book[price>35.00]')|bookstore元素的所有book元素，且其中的price元素的值须大于35.00|
 |selector.xpath('/bookstore/book[price>35.00]/title')|bookstore元素中的book元素的所有title元素，且其中的price元素的值须大于35.00|
+
+***
+## 通配符选取未知节点
+|path|功能|
+|:-----|:-----|
+|`selector.xpath('/bookstore/*')`|选取bookstore元素的所有子元素|
+|`selector.xpath('//*')`|选取文档中的所有元素|
+|`selector.xpath('//title[@*]')`|选取所有带有属性的title元素|
