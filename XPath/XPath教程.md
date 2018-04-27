@@ -1,9 +1,17 @@
 # XPath教程
+* [术语](#术语)
+  * [节点](#节点)
+* [语法](#语法)
+* [构造实例](#构造实例)
+* [选取节点](#选取节点)
+* [谓语](#谓语)
+* [通配符选取未知节点](#通配符选取未知节点)
+* [选取若干路径](#选取若干路径)
 
-# XPath 术语
-## 节点（Node）
+# 术语
+## 节点
 ```
-在 XPath 中，有七种类型的节点：元素、属性、文本、命名空间、处理指令、注释以及文档（根）节点。
+在 XPath 中，有七种类型的节点(node)：元素、属性、文本、命名空间、处理指令、注释以及文档（根）节点。
 XML 文档是被作为节点树来对待的。树的根被称为文档节点或者根节点。
 ```
 ```xml
@@ -27,9 +35,9 @@ XML 文档是被作为节点树来对待的。树的根被称为文档节点或�
 * `ancestor` 某节点的父、父的父，等等。title元素的先辈是book元素和bookstore元素
 * `descendant` 某个节点的子，子的子，等等。bookstore的后代是book、title、author、year 以及 price 元素
 
-# XPath语法
+# 语法
 XPath 使用路径表达式来选取 XML 文档中的节点或节点集。节点是通过沿着路径 (path) 或者步 (steps) 来选取的。
-## 构造实例
+# 构造实例
 ```python
 from lxml import etree
 xml='''
@@ -66,7 +74,7 @@ print(etree.tostring(selector).decode('utf-8'))
 ```
 
 ***
-## 选取节点
+# 选取节点
 ***
 |path|功能|
 |:-----|:-----|
@@ -75,12 +83,14 @@ print(etree.tostring(selector).decode('utf-8'))
 |selector.xpath('//book')|相对路径选取所有book子元素，而不管它们在文档中的位置|
 |selector.xpath('/bookstore//book')|bookstore元素的后代的所有book元素，而不管它们位于bookstore之下的什么位置|
 |selector.xpath('//@lang')|lang的所有属性|
+|selector.xpath('/bookstore/book')[0].xpath('.')|用符号'.'选取当前节点|
+|selector.xpath('/bookstore/book')[0].xpath('..')|用符号'.'选取当前节点的父节点|
 
 ***
 **总结：只有Element对象才能作为选择器（目前只接触到这个）；选择器经过路径选择后，永远返回一个列表；如果路径选择以选择标签节点为目的，则返回Element对象的列表；如果以属性键结束，则返回属性值的列表**
 
 ***
-## 谓语
+# 谓语
 ***Predicates，谓语用来查找某个特定的节点或者包含某个指定的值的节点。谓语被嵌在方括号中***
 ***
 |path|功能|
@@ -95,9 +105,17 @@ print(etree.tostring(selector).decode('utf-8'))
 |selector.xpath('/bookstore/book[price>35.00]/title')|bookstore元素中的book元素的所有title元素，且其中的price元素的值须大于35.00|
 
 ***
-## 通配符选取未知节点
+# 通配符选取未知节点
 |path|功能|
 |:-----|:-----|
 |`selector.xpath('/bookstore/*')`|选取bookstore元素的所有子元素|
 |`selector.xpath('//*')`|选取文档中的所有元素|
 |`selector.xpath('//title[@*]')`|选取所有带有属性的title元素|
+
+***
+# 选取若干路径
+|path|功能|
+|:-----|:-----|
+|selector.xpath('//book/title | //book/price')|选取book元素的所有title和price元素|
+|selector.xpath('//title | //price')|选取文档中的所有title和price元素|
+|selector.xpath('/bookstore/book/title | //price')|选取属于bookstore元素的book元素的所有title元素，以及文档中所有的price元素|
