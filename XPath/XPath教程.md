@@ -75,3 +75,6 @@ print(etree.tostring(selector).decode('utf-8'))
 |selector.xpath('//book')|相对路径选取所有book子元素，而不管它们在文档中的位置|
 |selector.xpath('/bookstore//book')|bookstore元素的后代的所有book元素，而不管它们位于bookstore之下的什么位置|
 |selector.xpath('//@lang')|lang的所有属性|
+
+***
+**总结：只有Element对象才能作为选择器（目前只接触到这个）；选择器经过路径选择后，永远返回一个列表；如果路径选择以选择标签节点为目的，则返回Element对象的列表；如果以属性键结束，则返回属性值的列表**
