@@ -115,6 +115,7 @@ print(etree.tostring(selector).decode('utf-8'))
 ***
 # 选取若干路径
 ***或==>>符号'|'***
+***
 |path|功能|
 |:-----|:-----|
 |selector.xpath('//book/title 或 //book/price')|选取book元素的所有title和price元素|
