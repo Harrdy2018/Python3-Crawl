@@ -70,7 +70,7 @@ print(etree.tostring(selector).decode('utf-8'))
 ***
 |path|return|功能|
 |:-----:|:-----:|
-|xpath('/bookstore')|[<Element bookstore>]|
+|xpath('/bookstore')|[<Element bookstore>]|绝对路径选取根元素bookstore|
 | 绝对路径选取根元素bookstore|
 |xpath('/bookstore/book')|[<Element book1>, <Element book2>]|bookstore的子元素的所有book元素|
 |xpath('//book')|[<Element book1>, <Element book2>]|相对路径选取所有book子元素，而不管它们在文档中的位置|
