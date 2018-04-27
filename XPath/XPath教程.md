@@ -19,10 +19,10 @@ XML 文档是被作为节点树来对待的。树的根被称为文档节点或�
 ```
 ***
 * 文档节点 `<bookstore>`
-* 元素节点 <author>J K. Rowling</author>
-* 属性节点 lang="en"
-* parent book元素是title、author、year以及price元素的父
-* children title、author、year以及price元素都是book元素的子
-* sibling  title、author、year以及price元素都是同胞
-* ancestor 某节点的父、父的父，等等。title元素的先辈是book元素和bookstore元素
-* descendant 某个节点的子，子的子，等等。bookstore的后代是book、title、author、year 以及 price 元素
+* 元素节点 `<author>J K. Rowling</author>`
+* 属性节点 `lang="en"`
+* `parent` book元素是title、author、year以及price元素的父
+* `children` title、author、year以及price元素都是book元素的子
+* `sibling`  title、author、year以及price元素都是同胞
+* `ancestor` 某节点的父、父的父，等等。title元素的先辈是book元素和bookstore元素
+* `descendant` 某个节点的子，子的子，等等。bookstore的后代是book、title、author、year 以及 price 元素
