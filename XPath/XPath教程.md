@@ -18,9 +18,9 @@ XML 文档是被作为节点树来对待的。树的根被称为文档节点或�
 </bookstore>
 ```
 ***
-* 文档节点<bookstore>
-* 元素节点<author>J K. Rowling</author>
-* 属性节点lang="en"
+* 文档节点 `<bookstore>`
+* 元素节点 <author>J K. Rowling</author>
+* 属性节点 lang="en"
 * parent book元素是title、author、year以及price元素的父
 * children title、author、year以及price元素都是book元素的子
 * sibling  title、author、year以及price元素都是同胞
