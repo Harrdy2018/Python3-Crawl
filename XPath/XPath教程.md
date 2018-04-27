@@ -78,3 +78,18 @@ print(etree.tostring(selector).decode('utf-8'))
 
 ***
 **总结：只有Element对象才能作为选择器（目前只接触到这个）；选择器经过路径选择后，永远返回一个列表；如果路径选择以选择标签节点为目的，则返回Element对象的列表；如果以属性键结束，则返回属性值的列表**
+
+***
+## 谓语
+***Predicates，谓语用来查找某个特定的节点或者包含某个指定的值的节点。谓语被嵌在方括号中***
+***
+|path|功能|
+|:-----:|:-----:|
+|selector.xpath('/bookstore/book[1]')|bookstore子元素的第一个book元素|
+|selector.xpath('/bookstore/book[last()]')|bookstore子元素的最后一个book元素|
+|selector.xpath('/bookstore/book[last()-1]')|bookstore子元素的倒数第二个book元素|
+|selector.xpath('/bookstore/book[position()<3]')|最前面的两个属于bookstore元素的子元素的book元素|
+|selector.xpath('//title[@lang]')|所有拥有名为lang的属性的title元素|
+|selector.xpath('//title[@lang='eng']')|所有title元素，且这些元素拥有值为eng的lang属性|
+|selector.xpath('/bookstore/book[price>35.00]')|bookstore元素的所有book元素，且其中的price元素的值须大于35.00|
+|selector.xpath('/bookstore/book[price>35.00]/title')|bookstore元素中的book元素的所有title元素，且其中的price元素的值须大于35.00|
