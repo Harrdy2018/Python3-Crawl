@@ -74,3 +74,4 @@ print(etree.tostring(selector).decode('utf-8'))
 |selector.xpath('/bookstore/book')|bookstore的子元素的所有book元素|
 |selector.xpath('//book')|相对路径选取所有book子元素，而不管它们在文档中的位置|
 |selector.xpath('/bookstore//book')|bookstore元素的后代的所有book元素，而不管它们位于bookstore之下的什么位置|
+|selector.xpath('//@lang')|lang的所有属性|
