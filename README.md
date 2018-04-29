@@ -4,6 +4,7 @@
 ***
 ## 目录
 ## 爬虫必备技能
+  * [会话和Cookies](https://github.com/Harrdy2018/Python3-Crawl/blob/master/%E4%BC%9A%E8%AF%9D%E5%92%8CCookies.md)
   * [隐藏](https://github.com/Harrdy2018/Python3-Crawl/blob/master/Hide.md)
   * [代理](https://github.com/Harrdy2018/Python3-Crawl/blob/master/Proxy.md)
 ## 简单爬虫项目
