@@ -45,8 +45,28 @@ Cookies在客户端，也可以理解为浏览器端，有了Cookies，浏览器
 
 ***
 # 属性结构
+**下图为我的淘宝网的cookies列表**
 ***
 ![](https://github.com/Harrdy2018/Python3-Crawl/blob/master/Cookies%E5%88%97%E8%A1%A8.png)
 ***
+**可以看到，这里有很多条目，其中每个条目可以称为Cookie。它有如下几个属性**
 ```
+Name：该Cookie的名称。一旦创建，该名称便不可更改。
+
+Value：该Cookie的值。如果值为Unicode字符，需要为字符编码。如果值为二进制数据，则需要使用BASE64编码。
+
+Domain：可以访问该Cookie的域名。例如，如果设置为.zhihu.com，则所有以zhihu.com，结尾的域名都可以访问该Cookie。
+
+Max Age：该Cookie失效的时间，单位为秒，也常和Expires一起使用，通过它可以计算出其有效时间。Max Age如果为正数，
+则该Cookie在Max Age秒之后失效。如果为负数，则关闭浏览器时Cookie即失效，浏览器也不会以任何形式保存该Cookie。
+
+Path：该Cookie的使用路径。如果设置为/path/，则只有路径为/path/的页面可以访问该Cookie。
+如果设置为/，则本域名下的所有页面都可以访问该Cookie。
+
+Size字段：此Cookie的大小。
+
+HTTP字段：Cookie的httponly属性。若此属性为true，则只有在HTTP头中会带有此Cookie的信息，
+而不能通过document.cookie来访问此Cookie。
+
+Secure：该Cookie是否仅被使用安全协议传输。安全协议有HTTPS和SSL等，在网络上传输数据之前先将数据加密。默认为false。
 ```
