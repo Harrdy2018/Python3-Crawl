@@ -45,5 +45,8 @@ Cookies在客户端，也可以理解为浏览器端，有了Cookies，浏览器
 
 ***
 # 属性结构
+***
+![](https://github.com/Harrdy2018/Python3-Crawl/blob/master/Cookies%E5%88%97%E8%A1%A8.png)
+***
 ```
 ```
