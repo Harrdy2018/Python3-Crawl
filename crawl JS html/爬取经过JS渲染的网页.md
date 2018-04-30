@@ -73,7 +73,7 @@ for item in archive_links:
     print(item)
 ```
 * 程序输出
-```python
+```text
 http://us4.campaign-archive.com/?u=9735795484d2e4c204da82a29&id=f203eb15cf
 http://us4.campaign-archive.com/?u=9735795484d2e4c204da82a29&id=bb793fb200
 http://us4.campaign-archive.com/?u=9735795484d2e4c204da82a29&id=99f7f43e06
