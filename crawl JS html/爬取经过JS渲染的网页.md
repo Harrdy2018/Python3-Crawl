@@ -1,9 +1,8 @@
 # 爬JavaScript渲染过的网页
 * [目标网站](#目标网站)
 * [解决方案](#解决方案)
+* [ASCII码](#ASCII码)
 * [总结](#总结)
-* [](#)
-* [](#)
 
 # 目标网站
 [pycoder's weekly](http://pycoders.com/archive/)  `http://pycoders.com/archive/`
@@ -29,6 +28,14 @@ print(r)
 >>>[]
 ```
 **由于经过了js渲染，我们根本无法得到任何信息**
+
+***
+# ASCII码
+```
+ASCII（发音： /ˈæski/ ass-kee[1]，American Standard Code for Information Interchange，美国信息交换标准代码）
+是基于拉丁字母的一套电脑编码系统。
+适用于所有拉丁文字字母，ASCII码有7位码和8位码两种形式。
+```
 
 ***
 # 解决方案
