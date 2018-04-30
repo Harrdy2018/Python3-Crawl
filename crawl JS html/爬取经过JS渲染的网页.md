@@ -1,4 +1,9 @@
 # 爬JavaScript渲染过的网页
+* [目标网站](#目标网站)
+* [解决方案](#解决方案)
+* [总结](#总结)
+* [](#)
+* [](#)
 
 # 目标网站
 [pycoder's weekly](http://pycoders.com/archive/)  `http://pycoders.com/archive/`
@@ -98,4 +103,11 @@ http://us4.campaign-archive.com/?u=9735795484d2e4c204da82a29&id=11db73cdfc
 ...
 ...
 ```
-# ***[Souce Code]()***
+
+***
+***[demo.py](https://github.com/Harrdy2018/Python3-Crawl/blob/master/crawl%20JS%20html/demo.py)***
+
+***
+# 总结
+* 这种方法很暴力，所以速度慢
+* 这种方法目前来看只适合提取信息，其扩展应用还需要研究
